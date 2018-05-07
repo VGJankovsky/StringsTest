@@ -10,6 +10,7 @@ import Foundation
 
 protocol TableRouterDelegate: class {
     func routerUpdateData() -> ()
+    func routerRemovedData(at row: Int) -> ()
     func routerRecognized(word: String) -> ()
 }
 
@@ -33,7 +34,7 @@ class StringsTableRouter {
     func deleteModel(at row: Int){
         guard row < models.count else { return }
         models.remove(at: row)
-        self.delegate?.routerUpdateData()
+        self.delegate?.routerRemovedData(at: row)
     }
     
     @objc private func onRecognizedWord(notification: Notification){

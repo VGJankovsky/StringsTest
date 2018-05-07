@@ -54,6 +54,10 @@ class StringsTableViewController: UITableViewController, TableRouterDelegate {
         tableView.reloadData()
     }
     
+    func routerRemovedData(at row: Int){
+        tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: UITableViewRowAnimation.left)
+    }
+    
     func routerRecognized(word: String) {
         let alertVC = UIAlertController(title: "Recognized word", message: word, preferredStyle: UIAlertControllerStyle.alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
